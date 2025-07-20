@@ -8,7 +8,9 @@ services:
       - mongo-data:/data/db
 
   backend:
-    build: ./backend
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile
     container_name: backend
     restart: always
     env_file:
@@ -19,7 +21,9 @@ services:
       - mongo
   
   frontend:
-    build: ./frontend
+    build: 
+      context: ./frontend
+      dockerfile: Dockerfile
     container_name: frontend
     restart: always
     ports:
