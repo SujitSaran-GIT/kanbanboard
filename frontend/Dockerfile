@@ -1,18 +1,14 @@
 # Build stage
-FROM node:18 as build
+FROM node:22-alpine
 
 WORKDIR /app
-COPY package*.json /app/
+
+COPY package.json package-lock.json ./
+
 RUN npm install
+
 COPY . .
-RUN npm run build
 
-# Serve the build
-FROM node:18
-RUN npm install -g serve
+EXPOSE 5173
 
-WORKDIR /app
-COPY --from=build /app/dist .
-EXPOSE 4173
-
-CMD ["serve", "-s", ".", "-l", "4173"]
+CMD [ "npm","run","dev" ]
