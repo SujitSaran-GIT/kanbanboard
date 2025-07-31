@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react"
 import { useDispatch } from "react-redux"
 import { logout } from "../redux/slices/authSlice"
 
-const INACTIVITY_LIMIT = 1 * 60 * 1000
+const INACTIVITY_LIMIT = 10 * 60 * 1000
 
 export default function useAutoLogout() {
     const dispatch = useDispatch()

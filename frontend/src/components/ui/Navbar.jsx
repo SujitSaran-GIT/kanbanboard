@@ -9,10 +9,10 @@ const Navbar = () => {
   const navigate = useNavigate();
   const user = useSelector(state => state.auth.user);
 
-  const getUserInitials = (email, name) => {
+  const getUserInitials = (email, firstName) => {
     // First check if name exists and has at least 2 characters
-    if (name && name.trim().length >= 2) {
-      return name.substring(0, 2).toUpperCase();
+    if (firstName && firstName.trim().length >= 2) {
+      return firstName.substring(0, 2).toUpperCase();
     }
     
     // Then check if email exists and has at least 2 characters
@@ -42,9 +42,9 @@ const Navbar = () => {
           <>
             <div className="flex items-center space-x-2 bg-[#FFD63A]/20 px-3 py-1 rounded-full">
               <div className="w-8 h-8 rounded-full flex items-center justify-center font-semibold text-white" style={{background: 'linear-gradient(135deg, #6DE1D2 0%, #FFA955 100%)'}}>
-                {getUserInitials(user.email, user.name)}
+                {getUserInitials(user.email, user.firstName)}
               </div>
-              <span className="text-white/80 text-sm font-medium hidden md:block">{user.name || user.email}</span>
+              <span className="text-white/80 text-sm font-medium hidden md:block">{user.firstName.toUpperCase() || user.email}</span>
             </div>
             <button onClick={handleLogout} className="bg-[#F75A5A] hover:bg-[#FFA955] text-white px-4 py-2 rounded-lg font-semibold transition-colors">Logout</button>
           </>

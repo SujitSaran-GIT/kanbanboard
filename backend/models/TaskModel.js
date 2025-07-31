@@ -15,10 +15,9 @@ const taskSchema = new mongoose.Schema({
         default: 'To Do',
     },
     userId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
+        type: String,
         required: true,
     },
-});
+},{timestamps: true});
 
 export default mongoose.model("Task", taskSchema)
